@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'variables';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/buttons';
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+
+html, body {
+  font-family: 'Helvetica Neue', 'Roboto', sans-serif;
+  margin-top: 1rem;
+  @include media-breakpoint-up(lg) {
+      margin-top: 5rem;
+  }
+}
+h1 {
+  font-weight: 300;
+  text-align: center;
+}
+h3 {
+  font-weight: 500;
+  font-size: 2rem;
+}
+.btn {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.features {
+    ul {
+        color: $gray;
+        padding-left: 20px;
+        li {
+            font-weight: 300;
+            strong {
+                font-weight: 300;
+            }
+        }
+    }
+}

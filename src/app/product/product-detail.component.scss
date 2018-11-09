@@ -1,0 +1,135 @@
+@import '../../variables';
+
+.price {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    span {
+        font-weight: normal;
+        font-size: 0.9rem;
+        color: $gray;
+        padding-left: 3px;
+    }
+}
+
+.special-offers {
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-top: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+            color: $primary;
+        }
+    }
+}
+
+.quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid $light-gray;
+    .quantity-label {
+        color: $gray;
+        align-self: center;
+    }
+    .quantity-number {
+        .btn {
+            background: none;
+            padding: 0;
+            margin: 0;
+            &[disabled] {
+                .fa {
+                    color: lighten($medium-gray, 15%);
+
+                }
+            }
+        }
+        .fa {
+            color: $medium-gray;
+            font-size: 2rem;
+        }
+        span {
+            font-size: 1.2rem;
+            font-weight: 800;
+            padding: 0 0.6rem;
+            margin-top: -5px;
+        }
+    }
+}
+
+.returns {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .returns-label {
+        font-weight: 300;
+        font-size: 1.3rem;
+        border-right: 1px solid $light-gray;
+    }
+    .returns-content {
+        font-size: 0.6rem;
+    }
+}
+
+.secondary-btns {
+    display: flex;
+    margin-bottom: 1rem;
+    .btn {
+        width: 100%;
+        flex-grow: 1;
+        flex-basis: 0;
+        margin: 5px;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $dark-gray;
+        padding: 0.2rem 0.75rem;
+    }
+}
+.reviews-overview {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    font-weight: 400;
+    .fa-star {
+        color: $primary;
+        font-size: 1.5rem;
+    }
+}
+.reviews {
+    background-color: lighten($light-gray, 5%);
+    color: $gray;
+    padding: 0.5rem 1rem;
+    margin-bottom: 3rem;
+    h3 {
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: #000;
+    }
+    h4 {
+        color: #000;
+    }
+    hr {
+        border-top: 1px solid darken($light-gray, 5%);
+        margin-bottom: 0.5rem;
+    }
+    .fa-star {
+        color: $primary;
+        &.gray {
+            color: $gray;
+        }
+    }
+    p {
+        font-size: 0.8rem;
+    }
+    a {
+        color: blue;
+    }
+}
