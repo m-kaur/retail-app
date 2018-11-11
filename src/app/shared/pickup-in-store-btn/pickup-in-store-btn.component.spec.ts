@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {PickupInStoreBtnComponent} from "./pickup-in-store-btn.component";
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
+import {PickupInStoreBtnComponent} from './pickup-in-store-btn.component';
+import {DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
 import { Product } from '../../product/model/product.model';
 
 describe('PickupInStoreBtnComponent', () => {
@@ -27,7 +27,7 @@ describe('PickupInStoreBtnComponent', () => {
     });
 
     it('show Pickup in store button if purchasing channel code is 0 or 2', () => {
-        let product: Product = new Product();
+        const product: Product = new Product();
         component.product = product;
 
         product.purchasingChannelCode = '0';

@@ -1,5 +1,5 @@
-import { Component,Input , OnInit } from '@angular/core';
-import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions} from "ngx-gallery";
+import { Component, Input , OnInit } from '@angular/core';
+import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOptions} from 'ngx-gallery';
 
 @Component({
   selector: 'app-image-gallery',
@@ -9,7 +9,7 @@ import {NgxGalleryAnimation, NgxGalleryImage, NgxGalleryImageSize, NgxGalleryOpt
 export class ImageGalleryComponent implements OnInit {
   public galleryOptions: NgxGalleryOptions[];
   public galleryImages: NgxGalleryImage[];
-  
+
   @Input() imagePaths: Array<string>;
 
   constructor() {
@@ -28,9 +28,9 @@ export class ImageGalleryComponent implements OnInit {
           thumbnailsSwipe : true,
           thumbnailSize: NgxGalleryImageSize.Contain,
           imageAnimation: NgxGalleryAnimation.Slide,
-          preview:true,
+          preview: true,
           previewZoom: true,
-          previewFullscreen:false,
+          previewFullscreen: false,
           previewForceFullscreen: false,
           arrowPrevIcon: 'fa fa-angle-left',
           arrowNextIcon: 'fa fa-angle-right'
@@ -45,7 +45,7 @@ export class ImageGalleryComponent implements OnInit {
           preview: false
       }
   ];
-  
+
     this.galleryImages = this.imagePaths.map(imgUrl => {
         return {
             small: imgUrl,

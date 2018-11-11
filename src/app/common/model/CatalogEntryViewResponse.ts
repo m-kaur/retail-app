@@ -127,4 +127,3 @@
     policyDays: string;
     user: string;
   }
-  

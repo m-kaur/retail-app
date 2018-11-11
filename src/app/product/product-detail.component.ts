@@ -11,9 +11,9 @@ import { ProductService } from './product.service';
 export class ProductDetailComponent implements OnInit {
 
   errorMessage = '';
-  product: Product = new Product();
+  product: Product; // = new Product();
   quantity: number = 1;
-  public fiveStars: Array<number> = Array(5).fill(0).map((x,i)=>i);
+  public fiveStars: Array<number> = Array(5); // .fill(0).map(( x,i ) => i);
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -21,22 +21,26 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param) {
-      this.getProduct(param);
+    const itemId = this.route.snapshot.paramMap.get('id');
+    if (itemId) {
+      this.getProduct(itemId);
     }
   }
 
   /**
-   * Method to make service call to get product 
-   * @param itemId 
+   * Method to make service call to get product
+   * @param itemId
    */
   getProduct(itemId: string) {
     this.productService.getProduct(itemId).subscribe(
       product => {
         this.product = product;
+        console.log("product: " + product)
       },
-      error => this.errorMessage = <any>error);
+      error => {
+        this.errorMessage = <any>error;
+        console.log("Error: " + this.errorMessage)
+      });
   }
 
   /**

@@ -1,12 +1,12 @@
 <div  *ngIf="product">
     <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h1 class="title">{{ product.title }}</h1>
         <div *ngIf="product.images">
         <app-image-gallery [imagePaths]="product.images"></app-image-gallery>
         </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="price">{{ product.offerPrice }}<span>online price</span></div>
         <div class="special-offers">
         <ul>
@@ -17,7 +17,7 @@
         </ul>
         </div>
         <div class="row">
-        <div class="col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="quantity">
             <div class="quantity-label">quantity:</div>
             <div class="quantity-number">

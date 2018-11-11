@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {environment} from "../../environments/environment";
-import { map } from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import { map, tap } from 'rxjs/operators';
 
 import { Product } from './model/product.model';
 import { CatalogEntryViewResponse } from '../common/model/CatalogEntryViewResponse';
@@ -17,12 +17,14 @@ export class ProductService {
   public getProducts(): Observable<Product[]> {
     return this.http.get<CatalogEntryViewResponse>(`${environment.productApiUrl}`)
       .pipe(
+        // tap( response => console.log("response: " + JSON.stringify(response)) ),
         map( response => response.CatalogEntryView ),
         map( catalogEntryViews => catalogEntryViews.map( viewEntity => new Product(viewEntity) ) )
       );
   }
 
-  public getProduct(itemId : string): Observable<Product | undefined> {
+  public getProduct(itemId: string): Observable<Product | undefined> {
+    console.log("Get product for: " + itemId)
     return this.getProducts().pipe(
       map((products: Product[]) => products.find(p => p.itemId === itemId))
     );

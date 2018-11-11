@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
+import {DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
 import { Product } from '../../product/model/product.model';
 import { AddToCartBtnComponent } from './add-to-cart-btn.component';
 
@@ -27,7 +27,7 @@ describe('PickupInStoreBtnComponent', () => {
     });
 
     it('show add to cart button if purchasing channel code is 0 or 1', () => {
-        let product: Product = new Product();
+        const product: Product = new Product();
         component.product = product;
 
         product.purchasingChannelCode = '0';

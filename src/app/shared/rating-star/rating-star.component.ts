@@ -13,19 +13,15 @@ export class RatingStarComponent {
   public fiveStars: Array<number> = new Array<number>(5);
 
   public isMarked = (index) => {
-  
+
       if (this.rating >= index + 1) {
         return 'fa-star-fill';
-      }
-      else if (this.rating > index && this.rating < index + 1) {
+      } else if (this.rating > index && this.rating < index + 1) {
         return 'fa-star-half';
-      }
-      else {
+      } else {
         return 'fa-star-blank';
       }
-   
   }
-
 }
 
 
