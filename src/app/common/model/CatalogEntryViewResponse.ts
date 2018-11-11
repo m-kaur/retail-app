@@ -47,7 +47,7 @@
     datePosted: string;
     overallRating: string;
     review: string;
-    reviewKey: string;
+    reviewKey?: string;
     screenName: string;
     title: string;
   }
@@ -84,8 +84,8 @@
   export interface ImagesEntity {
     AlternateImages?: (AlternateImagesEntityOrPrimaryImageEntity)[] | null;
     PrimaryImage?: (AlternateImagesEntityOrPrimaryImageEntity)[] | null;
-    imageCount: string;
-    source: string;
+    imageCount?: string;
+    source?: string;
   }
   export interface AlternateImagesEntityOrPrimaryImageEntity {
     image: string;

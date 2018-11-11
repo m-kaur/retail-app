@@ -5,15 +5,15 @@ import { Product } from './model/product.model';
 import { ProductService } from './product.service';
 
 @Component({
-  //selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
 
-  pageTitle = 'Product Detail';
   errorMessage = '';
   product: Product = new Product();
+  quantity: number = 1;
+  public fiveStars: Array<number> = Array(5).fill(0).map((x,i)=>i);
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -23,18 +23,34 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
-      // const id = +param;
       this.getProduct(param);
     }
   }
 
+  /**
+   * Method to make service call to get product 
+   * @param itemId 
+   */
   getProduct(itemId: string) {
     this.productService.getProduct(itemId).subscribe(
       product => {
-        console.log(product);
         this.product = product;
       },
       error => this.errorMessage = <any>error);
+  }
+
+  /**
+   * Method to increase product quantity
+   */
+  incQuantity() {
+    this.quantity++;
+  }
+
+  /**
+   * Method to decrease product quantity
+   */
+  decQuantity() {
+    this.quantity--;
   }
 
 }

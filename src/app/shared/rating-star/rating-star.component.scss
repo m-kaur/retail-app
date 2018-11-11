@@ -1,0 +1,14 @@
+@import '../../../variables';
+
+.fa-star {
+    color: $primary;
+    font-size: 1.5rem;
+}
+
+.fa-star-fill {
+    color: $primary;
+}
+
+.fa-star-blank {
+    color: $gray;
+}

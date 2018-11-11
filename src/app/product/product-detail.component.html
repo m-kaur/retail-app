@@ -1,93 +1,99 @@
-<div class="row"> <!--*ngIf="product"-->
-  <div class="col-lg-6">
-    <h1>{{ product.title }}</h1>
-     <!-- <app-image-carousel [imageUrls]="product.images"></app-image-carousel>-->
-  </div>
-  <div class="col-lg-6">
-    <div class="price">{{ product.offerPrice }}<span>online price</span></div>
-    <div class="special-offers">
-      <ul>
-        <li><i class="fa fa-tag"></i> spend $50, ship free</li>
-        <li><i class="fa fa-tag"></i> $25 gift card with purchase of a select Ninja Blender</li>
-      </ul>
+<div  *ngIf="product">
+    <div class="row">
+    <div class="col-lg-6">
+        <h1 class="title">{{ product.title }}</h1>
+        <div *ngIf="product.images">
+        <app-image-gallery [imagePaths]="product.images"></app-image-gallery>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="price">{{ product.offerPrice }}<span>online price</span></div>
+        <div class="special-offers">
+        <ul>
+        <li *ngFor="let promotion of product.promotions">
+            <i class="fa fa-tag"></i>
+            <span *ngFor="let description of promotion.Description"> {{description.shortDescription}}</span>
+            </li>
+        </ul>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+            <div class="quantity">
+            <div class="quantity-label">quantity:</div>
+            <div class="quantity-number">
+                <button (click)="decQuantity()" [disabled]="quantity <= 1" class="btn"><i class="fa fa-minus-circle"></i></button>
+                <span>{{ quantity }}</span>
+                <button (click)="incQuantity()" class="btn"><i class="fa fa-plus-circle"></i></button>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row cart-btns">
+        <div class="col-6">
+            <pickup-in-store-btn [product]="product"></pickup-in-store-btn>
+        </div>
+        <div class="col-6">
+        <app-add-to-cart-btn [product]="product"></app-add-to-cart-btn>
+        </div>
+        </div>
+        <div class="row returns">
+        <div class="col-sm-2 returns-label">returns</div>
+        <div class="col-sm-10 returns-content">This item must be returned within 30 days of the ship date. See return policy for details. Prices, promotions, styles and availability may vary by store and online.</div>
+        </div>
+        <div class="secondary-btns">
+            <button class="btn btn-light">Add to Registry</button>
+            <button class="btn btn-light">Add to List</button>
+            <button class="btn btn-light">Share</button>
+        </div>
+        <h3>product highlights</h3>
+        <div class="features">
+        <ul>
+            <li *ngFor="let feature of product.features" [innerHtml]="feature"></li>
+        </ul>
+        </div>
+    </div>
     </div>
     <div class="row">
-      <div class="col-sm-6">
-        <div class="quantity">
-          <div class="quantity-label">quantity:</div>
-          <div class="quantity-number">
-            <button (click)="decQuantity()" [disabled]="quantity <= 1" class="btn"><i class="fa fa-minus-circle"></i></button>
-            <span>{{ quantity }}</span>
-            <button (click)="incQuantity()" class="btn"><i class="fa fa-plus-circle"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row cart-btns">
-     <!-- <div class="col-6">
-        <app-pickup-in-store-btn [product]="product"></app-pickup-in-store-btn>
-      </div>
-      <div class="col-6">
-        <app-add-to-cart-btn [product]="product"></app-add-to-cart-btn>
-      </div>-->
-    </div>
-    <div class="row returns">
-      <div class="col-sm-2 returns-label">returns</div>
-      <div class="col-sm-10 returns-content">This item must be returned within 30 days of the ship date. See return policy for details. Prices, promotions, styles and availability may vary by store and online.</div>
-    </div>
-    <div class="secondary-btns">
-        <button class="btn btn-light">Add to Registry</button>
-        <button class="btn btn-light">Add to List</button>
-        <button class="btn btn-light">Share</button>
-    </div>
-    <h3>product highlights</h3>
-    <div class="features">
-      <!--<ul>
-        <li *ngFor="let feature of product.features" [innerHtml]="feature"></li>
-      </ul>-->
-    </div>
-  </div>
-</div>
-<div class="row">
-    <div class="col-lg-6">
-        <div class="reviews-overview">
-            <div class="rating">
-                <i class="fa fa-star" *ngFor="let i of fiveStars"></i>
-                overall
-            </div>
-            <span>view all 14 reviews</span>
-        </div>
-        <div class="reviews">
-            <div class="row">
-                <div class="col-6">
-                    <h3>PRO</h3>
-                    <p>most helpful 4-5 star review</p>
+        <div class="col-lg-6">
+            <div class="reviews-overview">
+                <div class="rating">
+                    <i class="fa fa-star fa-2x" *ngFor="let i of fiveStars"></i>
+                    overall
                 </div>
-                <div class="col-6">
-                    <h3>CON</h3>
-                    <p>most helpful 1-2 star review</p>
-                </div>
+                <a href="#">view all {{product.totalReviewCount}} reviews</a>
             </div>
-            <hr/>
-            <div class="row">
-                <div class="col-6">
-                    <div class="rating">
-                        <i class="fa fa-star" *ngFor="let i of fiveStars"></i>
+            <div class="reviews">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>PRO</h3>
+                        <p>most helpful 4-5 star review</p>
                     </div>
-                    <h4>Fantastic Blender</h4>
-                    <p>This blender works amazingly, and blends within seconds.  The single serve cups also work really well for smoothies or protein shakes!</p>
-                    <p><a href="">Eric</a> April 18, 2013</p>
-                </div>
-                <div class="col-6">
-                    <div class="rating">
-                        <i class="fa fa-star" [ngClass]="i > 0 ? 'gray' : ''" *ngFor="let i of fiveStars"></i>
+                    <div class="col-6">
+                        <h3>CON</h3>
+                        <p>most helpful 1-2 star review</p>
                     </div>
-                    <h4>Very unhappy</h4>
-                    <p>Less than 2 months after purchase it completely stopped working. First it wouldn't detect the pitcher when trying to blend a significant amount, a couple weeks later it wouldn't detect the single serve cup.</p>
-                    <p><a href="">New York</a> March 11, 2013</p>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-6" *ngIf="product.proReview">
+                        <div class="rating">
+                            <app-rating-star [rating]='product.proReview.overallRating'> </app-rating-star>
+                        </div>
+                        <h4>{{product.proReview.title}}</h4>
+                        <p>{{product.proReview.review}}</p>
+                        <p><a href="">{{product.proReview.screenName}}</a> {{product.proReview.datePosted| date:'mediumDate'}}</p>
+                    </div>
+                    <div class="col-6" *ngIf="product.conReview">
+                        <div class="rating">
+                            <app-rating-star [rating]='product.conReview.overallRating'> </app-rating-star>
+                        </div>
+                        <h4>{{product.conReview.title}}</h4>
+                        <p>{{product.conReview.review}}</p>
+                        <p><a href="">{{product.conReview.screenName}}</a> {{product.conReview.datePosted| date:'mediumDate'}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>

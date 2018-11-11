@@ -1,0 +1,9 @@
+ngx-gallery /deep/ ngx-gallery-thumbnails .ngx-gallery-arrow {
+    color: gray;
+    font-size: 32px;
+}
+
+/deep/ .ngx-gallery-thumbnail.ngx-gallery-active {  
+    border: 1px solid gray;
+}
+

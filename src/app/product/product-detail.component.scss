@@ -3,7 +3,7 @@
 .price {
     font-size: 1.9rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     span {
         font-weight: normal;
         font-size: 0.9rem;
@@ -48,7 +48,6 @@
             &[disabled] {
                 .fa {
                     color: lighten($medium-gray, 15%);
-
                 }
             }
         }
@@ -93,14 +92,15 @@
     }
 }
 .reviews-overview {
-    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
-    font-weight: 400;
+    font-weight: bold;
     .fa-star {
         color: $primary;
-        font-size: 1.5rem;
+    }
+    a {
+        color: $dark;
     }
 }
 .reviews {
@@ -111,25 +111,20 @@
     h3 {
         font-weight: 400;
         font-size: 1.2rem;
-        color: #000;
+        color: $dark;
     }
     h4 {
-        color: #000;
+        color: $dark;
     }
     hr {
         border-top: 1px solid darken($light-gray, 5%);
         margin-bottom: 0.5rem;
     }
-    .fa-star {
-        color: $primary;
-        &.gray {
-            color: $gray;
-        }
-    }
+   
     p {
         font-size: 0.8rem;
     }
     a {
-        color: blue;
+        color: $blue;
     }
 }

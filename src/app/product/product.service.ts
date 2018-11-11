@@ -2,29 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import {environment} from "../../environments/environment";
-import { catchError, tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Product } from './model/product.model';
-import { CatalogEntryViewRepository } from '../common/repositories/catalagEntryView.repository';
+import { CatalogEntryViewResponse } from '../common/model/CatalogEntryViewResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  //private productUrl = 'api/products/products.json';
 
-  constructor(private catalogEntryViewService: CatalogEntryViewRepository) { }
+  constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.catalogEntryViewService.getCatalogEntryViews()
+  public getProducts(): Observable<Product[]> {
+    return this.http.get<CatalogEntryViewResponse>(`${environment.productApiUrl}`)
       .pipe(
+        map( response => response.CatalogEntryView ),
         map( catalogEntryViews => catalogEntryViews.map( viewEntity => new Product(viewEntity) ) )
       );
   }
 
-  getProduct(itemId : String): Observable<Product | undefined> {
+  public getProduct(itemId : string): Observable<Product | undefined> {
     return this.getProducts().pipe(
       map((products: Product[]) => products.find(p => p.itemId === itemId))
+    );
+  }
+
+  public justGetProduct(): Observable<Product | undefined> {
+    return this.getProducts().pipe(
+      map((products: Product[]) => products[0])
     );
   }
 
