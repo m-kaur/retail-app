@@ -5,17 +5,19 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ProductModule } from './product/product.module';
+import { ProductListComponent } from './product/product-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'products/1840', pathMatch: 'full' },
-      { path: '**', redirectTo: 'products/1840', pathMatch: 'full' }
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: '**', redirectTo: 'error', pathMatch: 'full' }
     ]),
     ProductModule
   ],

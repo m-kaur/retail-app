@@ -19,7 +19,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ![CI/CD Diagram](https://github.com/m-kaur/retail-app/blob/master/src/assets/ci-cd-flow.PNG)
 
-## Future Improvements
+## Areas of Improvement
 
 1. I'd love to experiment with other libraries and implement image zoom in feature on hover in image carousal. Current implementation does it in lighbox but not on primary image.
 

@@ -5,17 +5,23 @@ import { AddToCartBtnComponent } from './add-to-cart-btn/add-to-cart-btn.compone
 import { RatingStarComponent } from './rating-star/rating-star.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    RouterModule.forChild([
+      { path: 'error', component: ErrorPageComponent }
+    ])
   ],
   declarations: [
     PickupInStoreBtnComponent,
     AddToCartBtnComponent,
     RatingStarComponent,
-    ImageGalleryComponent
+    ImageGalleryComponent,
+    ErrorPageComponent
   ],
   exports: [
     PickupInStoreBtnComponent,
@@ -25,3 +31,4 @@ import { NgxGalleryModule } from 'ngx-gallery';
   ]
 })
 export class SharedModule { }
+

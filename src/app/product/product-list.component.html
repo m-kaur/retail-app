@@ -1,0 +1,37 @@
+<div>
+    <h1>
+      Product List
+    </h1>
+   
+      <div class='table-responsive'>
+        <table class='table table-bordered'
+               *ngIf='products && products.length'>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let product of products'>
+              
+              <td>
+                <a [routerLink]="['/products', product.itemId]">
+                  {{ product.title }}
+                </a>
+              </td>
+              <td>{{ product.offerPrice }}</td>
+              <td>
+                {{product.proReview.overallRating}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+ 
+  </div>
+  <div *ngIf='errorMessage'
+       class='alert alert-danger'>
+    Error: {{ errorMessage }}
+  </div>
