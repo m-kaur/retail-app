@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductDetailComponent } from './product-detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductDetailGuard } from './product-detail-guard';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule.forChild([
       {
         path: 'products/:id',
-        // canActivate: [ProductDetailGuard],
+        canActivate: [ProductDetailGuard],
         component: ProductDetailComponent
       },
     ]),

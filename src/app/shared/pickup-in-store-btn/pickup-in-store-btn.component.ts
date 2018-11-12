@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Product } from '../../product/model/product.model';
 
 @Component({
-  selector: 'pickup-in-store-btn',
+  selector: 'app-pickup-in-store-btn',
   templateUrl: './pickup-in-store-btn.component.html',
   styleUrls: ['./pickup-in-store-btn.component.scss']
 })
@@ -10,8 +10,8 @@ export class PickupInStoreBtnComponent implements OnChanges {
 
     @Input()
     product: Product = new Product();
- 
-    public showBtn: boolean = false;
+
+    public showBtn = false;
 
     constructor() { }
 

@@ -17,14 +17,12 @@ export class ProductService {
   public getProducts(): Observable<Product[]> {
     return this.http.get<CatalogEntryViewResponse>(`${environment.productApiUrl}`)
       .pipe(
-        // tap( response => console.log("response: " + JSON.stringify(response)) ),
         map( response => response.CatalogEntryView ),
         map( catalogEntryViews => catalogEntryViews.map( viewEntity => new Product(viewEntity) ) )
       );
   }
 
   public getProduct(itemId: string): Observable<Product | undefined> {
-    console.log("Get product for: " + itemId)
     return this.getProducts().pipe(
       map((products: Product[]) => products.find(p => p.itemId === itemId))
     );

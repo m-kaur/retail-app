@@ -11,7 +11,7 @@ export class AddToCartBtnComponent implements OnChanges {
   @Input()
   public product: Product;
 
-  public showBtn: boolean = false;
+  public showBtn = false;
 
   constructor() { }
 

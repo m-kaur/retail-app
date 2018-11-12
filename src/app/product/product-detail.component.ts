@@ -10,10 +10,10 @@ import { ProductService } from './product.service';
 })
 export class ProductDetailComponent implements OnInit {
 
-  errorMessage = '';
-  product: Product; // = new Product();
-  quantity: number = 1;
-  public fiveStars: Array<number> = Array(5); // .fill(0).map(( x,i ) => i);
+  public errorMessage = '';
+  public product: Product;
+  public quantity = 1;
+  public fiveStars: Array<number> = Array(5);
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -29,31 +29,28 @@ export class ProductDetailComponent implements OnInit {
 
   /**
    * Method to make service call to get product
-   * @param itemId
+   * @param itemId - item Id passed from url
    */
-  getProduct(itemId: string) {
+  public getProduct(itemId: string): void {
     this.productService.getProduct(itemId).subscribe(
       product => {
         this.product = product;
-        console.log("product: " + product)
       },
-      error => {
-        this.errorMessage = <any>error;
-        console.log("Error: " + this.errorMessage)
-      });
+      error => this.errorMessage = <any>error
+    );
   }
 
   /**
    * Method to increase product quantity
    */
-  incQuantity() {
+  public incQuantity(): void {
     this.quantity++;
   }
 
   /**
    * Method to decrease product quantity
    */
-  decQuantity() {
+  public decQuantity(): void {
     this.quantity--;
   }
 
