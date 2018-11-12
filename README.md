@@ -17,7 +17,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## CI/CD Diagram
 
-![CI/CD Diagram](https://github.com/m-kaur/retail-app/master/ci-cd-flow.PNG)
+![CI/CD Diagram](https://github.com/m-kaur/retail-app/blob/master/src/assets/ci-cd-flow.PNG)
 
 ## Future Improvements
 
